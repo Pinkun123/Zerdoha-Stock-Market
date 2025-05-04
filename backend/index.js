@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const authRoute = require("./Routes/AuthRoute");
 
 //local module
 const { holdingsModel } = require("./model/holdingsModel");
@@ -14,14 +16,32 @@ const { postionsModel } = require("./model/postionsModel");
 const PORT = process.env.PORT || 3000;
 const mongoUrl = process.env.MONGO_URL;
 
+mongoose
+  .connect(mongoUrl, {
+    // useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB is  connected successfully"))
+  .catch((err) => console.error(err));
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+
 app.use(cors());
 
 app.use(
   cors({
     origin: "http://localhost:3001", //to be changed later to vercel url
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   })
 );
+
+app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(express.json());
+app.use("/", authRoute);
 
 // app.get("/addHoldings", async (req, res) => {
 //   let tempHoldings = [
@@ -202,8 +222,8 @@ app.get("/allPostions", async (req, res) => {
   res.json(allPostions);
 });
 
-app.listen(PORT, () => {
-  console.log("app is started");
-  mongoose.connect(mongoUrl);
-  console.log("conected db");
-});
+// app.listen(PORT, () => {
+//   console.log("app is started");
+//   mongoose.connect(mongoUrl);
+//   console.log("conected db");
+// });

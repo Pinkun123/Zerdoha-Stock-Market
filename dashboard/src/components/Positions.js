@@ -2,43 +2,43 @@ import React, { useState, useEffect } from "react";
 // import axios, { all } from "axios";
 import axios from "axios";
 
-import { position } from "../data/data";
+// import { position } from "../data/data";
 
 const Positions = () => {
   const [positions, setAllPositions] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      // DATA FROM DB
-      // try {
-      //   const res = await axios.get("http://localhost:3000/allHoldings");
-      //   setAllHoldings(res.data);
-      // } catch (error) {
-      //   console.error("Error fetching holdings:", error);
-      //   setAllHoldings([]);
-      // }
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     // DATA FROM DB
+  //     // try {
+  //     //   const res = await axios.get("http://localhost:3000/allHoldings");
+  //     //   setAllHoldings(res.data);
+  //     // } catch (error) {
+  //     //   console.error("Error fetching holdings:", error);
+  //     //   setAllHoldings([]);
+  //     // }
 
-      // DATA FROM API
-      const options = {
-        method: "GET",
-        url: "https://api.marketstack.com/v1/eod?access_key=eb15d4026c125c5387ec0a525c54375a",
-        params: {
-          symbols: "AAPL",
-        },
-      };
+  //     // DATA FROM API
+  //     // const options = {
+  //     //   method: "GET",
+  //     //   url: "https://api.marketstack.com/v1/eod?access_key=eb15d4026c125c5387ec0a525c54375a",
+  //     //   params: {
+  //     //     symbols: "AAPL",
+  //     //   },
+  //     // };
 
-      try {
-        const response = await axios.request(options);
-        // console.log(response.data.data);
-        setAllPositions(response.data.data);
-      } catch (error) {
-        console.error(error);
-        setAllPositions([]);
-      }
-    };
+  //     try {
+  //       const response = await axios.request(options);
+  //       // console.log(response.data.data);
+  //       setAllPositions(response.data.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //       setAllPositions([]);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   return (
     <>
