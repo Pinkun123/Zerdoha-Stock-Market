@@ -51,7 +51,7 @@ function TeamMember() {
         </div>
         <div className="col-lg-4 col-sm-6 mt-5">
           <img
-            src="media/images/Karthik.jpg"
+            src="media/images/karthik.jpg"
             className="rounded-circle"
             style={{ width: "70%" }}
           ></img>
