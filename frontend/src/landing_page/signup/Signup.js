@@ -32,7 +32,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3001/api/signup",
+        "http://localhost:3001/signup",
         {
           ...inputValue,
         },
@@ -50,12 +50,12 @@ const Signup = () => {
     } catch (error) {
       console.log(error);
     }
-    // setInputValue({
-    //   ...inputValue,
-    //   email: "",
-    //   password: "",
-    //   username: "",
-    // });
+    setInputValue({
+      ...inputValue,
+      email: "",
+      password: "",
+      username: "",
+    });
   };
 
   return (
